@@ -1,5 +1,7 @@
 package conta;
 
+import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import conta.model.ContaCorrente;
 import conta.model.ContaPoupanca;
@@ -65,8 +67,14 @@ public class Menu {
 		System.out.println("Entre com a opçao desejada:                      ");
 		System.out.println("                                                 " + Cores.TEXT_RESET);
 		
+		try {
 		opcao = leia.nextInt();
-		
+	} catch (InputMismatchException e) {
+		System.out.println("\nDigite valores inteiros! ");
+		leia.nextLine();
+		opcao = 0;
+	}
+
 		if (opcao == 9) {
 			System.out.println(Cores.TEXT_WHITE_BOLD + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
 			sobre();
@@ -78,58 +86,65 @@ public class Menu {
 		switch (opcao) {
 		case 1:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Criar Conta\n\n");
+			keyPress();
 			break;
 			
 		case 2:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Listar todas as contas\n\n");
+			keyPress();
 			break;
 			
 		case 3:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Consultar dados da Conta - por número\n\n");
+			keyPress();
 			break;
 			
 		case 4:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Atualizar dados da Conta\n\n");
+			keyPress();
 			break;
 			
 		case 5:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Apagar a Conta\n\n");
+			keyPress();
 			break;
 			
 		case 6:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Saque\n\n");
+			keyPress();
 			break;
 			
 		case 7:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Depósito\n\n");
+			keyPress();
 			break;
 			
 		case 8:
 			System.out.println(Cores.TEXT_WHITE_BOLD + "Transferência entre Contas\n\n");
+			keyPress();
 			break;
 			
 		default:
 			System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida\n" + Cores.TEXT_RESET);
-			break;
-			
-			
-			
-			
-			
-			
-			
-			
-			
+			keyPress();
+			break; 
 			
 		}
 		
-		
-		
-		
-		
-		
-		
-		}
 	}
+			
+}	public static void keyPress() {
+		
+		try {
+			System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para continuar...");
+			System.in.read();
+			
+		} catch (IOException e) {
+			System.out.println("Você pressionou uma tecla diferente de Enter!");
+		}
+	}	
+		
+	
+		}
 
-}
+
